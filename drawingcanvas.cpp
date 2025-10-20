@@ -32,31 +32,31 @@ void DrawingCanvas::segmentDetection(){
     //To not crash we set initial size of the matrix
     vector<CustomMatrix> windows(image.width()*image.height());
 
-    // // For Matrix 3 x 3
-    // // Get the pixel value as an ARGB integer (QRgb is a typedef for unsigned int)
-    // int count_true_mat3 = 0;
-    // for(int i = 1; i < image.width()-1;i++){
-    //     for(int j = 1; j < image.height()-1;j++){
-    //         bool local_window[3][3] = {false};
+    // For Matrix 3 x 3
+    // Get the pixel value as an ARGB integer (QRgb is a typedef for unsigned int)
+    int count_true_mat3 = 0;
+    for(int i = 1; i < image.width()-1;i++){
+        for(int j = 1; j < image.height()-1;j++){
+            bool local_window[3][3] = {false};
 
-    //         for(int m=-1;m<=1;m++){
-    //             for(int n=-1;n<=1;n++){
-    //                 QRgb rgbValue = image.pixel(i+m, j+n);
-    //                 local_window[m+1][n+1] = (rgbValue != 0xffffffff);
-    //                 if(local_window[m+1][n+1] == 1){
-    //                     cout << "\n The matrix in local_window ("<<m+1<<","<< n+1 << ") is " << local_window[m+1][n+1] << endl;
-    //                     count_true_mat3++;
-    //                     break;
-    //                 }
-    //             }
-    //         }
+            for(int m=-1;m<=1;m++){
+                for(int n=-1;n<=1;n++){
+                    QRgb rgbValue = image.pixel(i+m, j+n);
+                    local_window[m+1][n+1] = (rgbValue != 0xffffffff);
+                    if(local_window[m+1][n+1] == 1){
+                        cout << "\n The matrix in local_window ("<<m+1<<","<< n+1 << ") is " << local_window[m+1][n+1] << endl;
+                        count_true_mat3++;
+                        break;
+                    }
+                }
+            }
 
-    //         CustomMatrix mat3(local_window);
+            CustomMatrix mat3(local_window);
 
-    //         windows.push_back(mat3);
-    //     }
-    // }
-    // cout << "\n Total color detected in 3 x 3 = "<<count_true_mat3;
+            windows.push_back(mat3);
+        }
+    }
+    cout << "\n Total color detected in 3 x 3 = "<<count_true_mat3;
 
     // For Matrix 5 x 5
     // Use sub-matrix for better detection
