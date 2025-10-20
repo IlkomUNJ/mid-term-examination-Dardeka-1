@@ -7,7 +7,8 @@ using namespace std;
 
 class CustomMatrix{
 public:
-    bool mat[3][3]={0};
+    bool mat3[3][3]={0};
+    bool mat5[5][5]={0};
     CustomMatrix(){
 
     }
@@ -18,7 +19,7 @@ public:
         for (int i=0;i< m_size;i++) {
             for(int j=0; j < sizeof(m[0]);j++){
                 //cout << i << " " << j << endl;
-                mat[i][j] = m[i][j];
+                mat3[i][j] = m[i][j];
             }
         }
     }
@@ -28,7 +29,28 @@ public:
         for (int i=0;i< m_size;i++) {
             for(int j=0; j < sizeof(m[0]);j++){
                 //cout << i << " " << j << endl;
-                mat[i][j] = m[i][j];
+                mat3[i][j] = m[i][j];
+            }
+        }
+    }
+
+    // matrix 5 x 5
+    CustomMatrix(bool m[5][5]){
+        const int m_size = sizeof(m) / sizeof(m[0]);
+        for (int i=0;i< m_size;i++) {
+            for(int j=0; j < sizeof(m[0]);j++){
+                //cout << i << " " << j << endl;
+                mat5[i][j] = m[i][j];
+            }
+        }
+    }
+
+    void fillMatrix(bool m[5][5]){
+        const int m_size = sizeof(m) / sizeof(m[0]);
+        for (int i=0;i< m_size;i++) {
+            for(int j=0; j < sizeof(m[0]);j++){
+                //cout << i << " " << j << endl;
+                mat5[i][j] = m[i][j];
             }
         }
     }
